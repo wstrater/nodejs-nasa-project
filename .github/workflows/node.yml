@@ -17,7 +17,7 @@ jobs:
         with:
           node-version: '20'
       - name: Install Dependencies
-        run: npm-install
+        run: npm install
       - name: Build Front End
         run: npm run build --prefix-client
   # deploy:
