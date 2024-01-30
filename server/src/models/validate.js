@@ -67,7 +67,7 @@ function isDateValue(value) {
             && big <= 32503698000000n;
     } else if (isNumberValue(value)) {
         const num = Number(value);
-        console.log('isDateValue', 2, value, num, !isNaN(num), Number.isInteger(value));
+        console.log('isDateValue', 3, value, num, !isNaN(num), Number.isInteger(value));
         return !isNaN(num)
             && Number.isInteger(value)
             && num >= 0;
@@ -156,80 +156,6 @@ function isString(value) {
 function isUndefined(value) {
     return value === undefined;
 }
-
-// function runTests() {
-//     testValue(-1);
-//     testValue(0);
-//     testValue(1);
-//     testValue(1.123);
-//     testValue(new Date('01/01/3000').valueOf());
-//     testValue(new Date('01/01/3000').valueOf() + 1);
-//     testValue(NaN);
-//     testValue(Infinity);
-//     testValue('1');
-//     testValue(true);
-//     testValue('false');
-//     testValue('a');
-//     testValue([]);
-//     testValue([1]);
-//     testValue({});
-//     testValue({a: 1});
-//     testValue(null);
-//     testValue({}.missing);
-//     testValue(new Date());
-//     testValue('12/31/23')
-//     testValue(() => {return true});
-// }
-
-// function testValueIs(value) {
-//     const ret = [];
-
-//     if (isArray(value)) {
-//         ret.push('isArray');
-//     }
-//     if (isBoolean(value)) {
-//         ret.push('isBoolean');
-//     }
-//     if (isBooleanValue(value)) {
-//         ret.push('isBooleanValue');
-//     }
-//     if (isDate(value)) {
-//         ret.push('isDate');
-//     }
-//     if (isDateValue(value)) {
-//         ret.push('isDateValue');
-//     }
-//     if (isEmpty(value)) {
-//         ret.push('isEmpty');
-//     }
-//     if (isFunction(value)) {
-//         ret.push('isFunction');
-//     }
-//     if (isNull(value)) {
-//         ret.push('isNull');
-//     }
-//     if (isNumber(value)) {
-//         ret.push('isNumber');
-//     }
-//     if (isNumberValue(value)) {
-//         ret.push('isNumberValue');
-//     }
-//     if (isObject(value)) {
-//         ret.push('isObject');
-//     }
-//     if (isString(value)) {
-//         ret.push('isString');
-//     }
-//     if (isUndefined(value)) {
-//         ret.push('isUndefined');
-//     }
-
-//     return ret;
-// }
-
-// function testValue(value) {
-//     console.log(value, (typeof value), testValueIs(value));
-// }
 
 function validateIsBoolean(errors, value, error) {
     if (isArray(errors) && !isNull(error) && !isUndefined(error)) {
