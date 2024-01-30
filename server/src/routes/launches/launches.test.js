@@ -204,18 +204,26 @@ describe('Launches API', () => {
 
     describe('Get Launch', () => {
         test('Get existing launch', async () => {
-            const allLaunches = await request(app)
-                .get('/v1/launches')
-                .expect(200)
+            const EXPECTED = (() => {
+                const RESP = { ...LAUNCH };
+                delete RESP.launchDate;
+                return RESP;
+            })();
+
+            const addedResponse = await request(app)
+                .post('/v1/launches')
+                .set('Content-Type', 'application/json')
+                .send(LAUNCH)
+                .expect(201)
                 .expect('Content-Type', /json/);
 
-            const expectedLaunches = allLaunches.body;
+            const addedLaunch = addedResponse.body;
+            console.log('addedLaunch', addedLaunch);
 
-            expect(expectedLaunches.length).toBeGreaterThan(0);
+            expect(addedLaunch.success).toBeTruthy();
+            expect(addedLaunch.upcoming).toBeTruthy();
 
-            const expectedLaunch = expectedLaunches[0];
-
-            const flightNumber = Number(expectedLaunch.flightNumber || -1);
+            const flightNumber = Number(addedLaunch.flightNumber || -1);
             expect(flightNumber).toBeGreaterThan(0);
 
             const response = await request(app)
@@ -223,12 +231,12 @@ describe('Launches API', () => {
                 .expect(200)
                 .expect('Content-Type', /json/);
 
-            expect(response.body).toMatchObject(expectedLaunch);
+            expect(response.body).toMatchObject(EXPECTED);
         });
 
         test('Get missing launch', async () => {
             const response = await request(app)
-                .get(`/v1/launches/1`)
+                .get(`/v1/launches/111111111`)
                 .expect(404);
 
             expect(response.body).toMatchObject({
@@ -278,7 +286,7 @@ describe('Launches API', () => {
 
         test('Abort missing launch', async () => {
             const response = await request(app)
-                .delete(`/v1/launches/1`)
+                .delete(`/v1/launches/111111111`)
                 .expect(404);
 
             expect(response.body).toMatchObject({

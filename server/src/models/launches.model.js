@@ -300,7 +300,7 @@ async function modelFindOneLaunch(filter) {
 
     console.log('modelFindOneLaunch', results);
 
-    return result;
+    return results;
 }
 
 async function modelGetAllLaunches(request) {

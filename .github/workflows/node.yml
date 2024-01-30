@@ -8,17 +8,28 @@ on:
       - master
 jobs:
   build:
-    runs-on: ubuntu-latest
+    env:
+      CI: true
+    strategy:
+      matrix:
+        node-version:
+          - 18
+          - 20
+        runs-on:
+          - ubuntu-latest
+    runs-on: ${{ matrix.ubuntu-latest }}
     steps:
-      - name: Checkout Code
+      - name: Checkout Code on ${{ matrix.ubuntu-latest }}
         uses: actions/checkout@v4
-      - name: Setup Node.js 20
+      - name: Setup Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          node-version: ${{ matrix.node-version }}
       - name: Install Dependencies
         run: npm install
       - name: Build Front End
         run: npm run build --prefix-client
+      - name: Run Tests
+        run: npm test
   # deploy:
   #   needs: build
