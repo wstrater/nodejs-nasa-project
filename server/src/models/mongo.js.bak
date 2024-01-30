@@ -1,10 +1,10 @@
 const { MongoClient, Decimal128, ObjectId, ServerApiVersion } = require('mongodb');
 
-const MONGO_URL = process.env.MONGO_URL || 'learnmongodb.whe2o7y.mongodb.net/shop';
-const MONGO_USER = process.env.MONGO_USER || 'nasa-api';
-const MONGO_PASSWORD = process.env.MONGO_PASSWORD | 'Euxq9YelFFhqNxQH';
+const MONGO_USER = process.env.MONGO_USER;
+const MONGO_PASSWORD = process.env.MONGO_PASSWORD;
+const MONGO_CONNECTION = process.env.MONGO_CONNECTION || 'learnmongodb.whe2o7y.mongodb.net/shop?retryWrites=true&w=majority';
 
-const mongoUri = `mongodb+srv://${MONGO_USER}:${MONGO_PASSWORD}@${MONGO_URL}?retryWrites=true&w=majority`;
+const mongoUri = `mongodb+srv://${MONGO_USER}:${MONGO_PASSWORD}@${MONGO_CONNECTION}`;
 
 let _client;
 
@@ -87,11 +87,11 @@ module.exports = {
 
 const { MongoClient, ServerApiVersion } = require('mongodb');
 
-var MONGO_URL = 'learnmongodb.whe2o7y.mongodb.net/shop';
-var MONGO_USER = 'nasa-api';
-var MONGO_PASSWORD = 'Euxq9YelFFhqNxQH';
+var MONGO_USER;
+var MONGO_PASSWORD;
+var MONGO_CONNECTION = 'learnmongodb.whe2o7y.mongodb.net/shop?retryWrites=true&w=majority';
 
-var MONGO_URI = `mongodb+srv://${MONGO_USER}:${MONGO_PASSWORD}@${MONGO_URL}?retryWrites=true&w=majority`;
+var MONGO_URI = `mongodb+srv://${MONGO_USER}:${MONGO_PASSWORD}@${MONGO_CONNECTION}`;
 var uri = `mongodb+srv://${MONGO_USER}:${MONGO_PASSWORD}@learnmongodb.whe2o7y.mongodb.net/?retryWrites=true&w=majority`;
 
 // Create a MongoClient with a MongoClientOptions object to set the Stable API version
