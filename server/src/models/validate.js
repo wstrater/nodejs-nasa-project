@@ -51,7 +51,7 @@ function isDateValue(value) {
         return true;
     } else if (isNumberValue(value)) {
         const num = Number(value);
-        console.log('isDateValue', 2, value, num);
+        console.log('isDateValue', 2, value, num, !isNaN(num), Number.isInteger(value), num >= 0, num <= 32503698000000);
         return !isNaN(num)
             && Number.isInteger(value)
             && num >= 0
