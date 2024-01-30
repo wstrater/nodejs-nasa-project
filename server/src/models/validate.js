@@ -1,4 +1,5 @@
 const ARRAY_CONSTRUCTOR = [].constructor;
+const BIGINT_CONSTRUCTOR = (1n).constructor;
 const BOOLEAN_CONSTRUCTOR = (true).constructor;
 const FUNCTION_CONSTRUCTOR = (() => {return true;}).constructor;
 const NUMBER_CONSTRUCTOR = (1).constructor;
@@ -13,6 +14,14 @@ function isArray(value) {
         && value.constructor === ARRAY_CONSTRUCTOR;
 }
 
+function isBigInt(value) {
+    return value != null
+        && value != undefined
+        && typeof value === 'bigint'
+        && (value).constructor === BigInt
+        && (value).constructor === BIGINT_CONSTRUCTOR
+}
+
 function isBoolean(value) {
     return value != null
         && value != undefined
@@ -24,6 +33,8 @@ function isBoolean(value) {
 function isBooleanValue(value) {
     if (isBoolean(value)) {
         // console.log('isBooleanValue', '2');
+        return true;
+    } else if (isBigInt(value)) {
         return true;
     } else if (isNumberValue(value)) {
         // console.log('isBooleanValue', '3');
@@ -49,17 +60,17 @@ function isDateValue(value) {
     if (isDate(value)) {
         console.log('isDateValue', 1, value);
         return true;
+    } else if (isBigInt(value)) {
+        const big = BigInt(value);
+        console.log('isDateValue', 2, value, big, big >= 0n, big <= 32503698000000n);
+        return big >= 0n
+            && big <= 32503698000000n;
     } else if (isNumberValue(value)) {
         const num = Number(value);
-        if (isNaN(num) || !Number.isInteger(value)) {
-            console.log('isDateValue', 2, value, num, !isNaN(num), Number.isInteger(value));
-            return false;
-        } else {
-            const big = BigInt(value);
-            console.log('isDateValue', 3, value, num, big, !isNaN(num), Number.isInteger(value), big >= 0n, big <= 32503698000000n);
-            return big >= 0n
-                && big <= 32503698000000n;
-        }
+        console.log('isDateValue', 2, value, num, !isNaN(num), Number.isInteger(value));
+        return !isNaN(num)
+            && Number.isInteger(value)
+            && num >= 0;
     } else if (isString(value)) {
         const date = new Date(value);
         console.log('isDateValue', 4, value, date);
@@ -100,16 +111,22 @@ function isNull(value) {
 }
 
 function isNumber(value) {
-    return value != null 
-        && value != undefined
-        && typeof value === 'number'
-        && !isNaN(value)
-        && (value).constructor === Number
-        && (value).constructor === NUMBER_CONSTRUCTOR;
+    if (isBigInt(value)) {
+        return true;
+    } else {
+        return value != null
+            && value != undefined
+            && !isNaN(value)
+            && typeof value === 'number'
+            && (value).constructor === Number
+            && (value).constructor === NUMBER_CONSTRUCTOR;
+    }
 }
 
 function isNumberValue(value) {
-    if (isNumber(value)) {
+    if (isBigInt(value)) {
+        return true;
+    } else if (isNumber(value)) {
         // console.log('isNumberValue', '2');
         return !isNaN(value);
     } else if (isString(value)) {
@@ -300,6 +317,7 @@ function validateIsNumberOrEmpty(errors, value, error) {
 
 module.exports = {
     isArray,
+    isBigInt,
     isBoolean,
     isBooleanValue,
     isDate,
