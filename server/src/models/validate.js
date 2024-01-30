@@ -51,14 +51,18 @@ function isDateValue(value) {
         return true;
     } else if (isNumberValue(value)) {
         const num = Number(value);
-        console.log('isDateValue', 2, value, num, !isNaN(num), Number.isInteger(value), num >= 0, num <= 32503698000000);
-        return !isNaN(num)
-            && Number.isInteger(value)
-            && num >= 0
-            && num <= 32503698000000;
+        if (isNaN(num) || !Number.isInteger(value)) {
+            console.log('isDateValue', 2, value, num, !isNaN(num), Number.isInteger(value));
+            return false;
+        } else {
+            const big = BigInt(value);
+            console.log('isDateValue', 3, value, num, big, !isNaN(num), Number.isInteger(value), big >= 0n, big <= 32503698000000n);
+            return big >= 0n
+                && big <= 32503698000000n;
+        }
     } else if (isString(value)) {
         const date = new Date(value);
-        console.log('isDateValue', 3, value, date);
+        console.log('isDateValue', 4, value, date);
         return (!isNaN(date)
             || date.toString() != 'Invalid Date');
     }
