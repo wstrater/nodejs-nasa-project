@@ -10,8 +10,13 @@ jobs:
   build:
     env:
       CI: true
+      MONGO_CONNECTION: localhost
+      MONGO_USER: none
+      MONGO_URL: mongodb://localhost/nasa
     strategy:
       matrix:
+        mongodb-version:
+          - '6.0'
         node-version:
           - 18
           - 20
@@ -25,6 +30,10 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node-version }}
+      - name: Setup MongoDB ${{ matrix.mongodb-version }}
+        uses: supercharge/mongodb-github-action@1.10.0
+        with:
+          mongodb-version: ${{ matrix.mongodb-version }}
       - name: Install Dependencies
         run: npm install
       - name: Build Front End
