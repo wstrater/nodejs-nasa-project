@@ -17,11 +17,11 @@ describe('Test isArray', () => {
     test('Test 1.123', () => {
         expect(testValue(1.123)).toBeFalsy();
     });
-    test('Test new Date(\'01/01/3000\').valueOf()', () => {
-        expect(testValue(BigInt(new Date('01/01/3000').valueOf()))).toBeFalsy();
+    test('Test new Date(\'3000-01-01T00:00:00.000Z\').valueOf()', () => {
+        expect(testValue(new Date('3000-01-01T00:00:00.000Z').valueOf())).toBeFalsy();
     });
-    test('Test new Date(\'01/01/3000\').valueOf() + 1', () => {
-        expect(testValue(BigInt(new Date('01/01/3000').valueOf()) + 1n)).toBeFalsy();
+    test('Test new Date(\'3000-01-01T00:00:00.000Z\').valueOf() + 1', () => {
+        expect(testValue(new Date('3000-01-01T00:00:00.000Z').valueOf() + 1)).toBeFalsy();
     });
     test('Test NaN', () => {
         expect(testValue(NaN)).toBeFalsy();
@@ -93,11 +93,11 @@ describe('Test isBoolean', () => {
     test('Test 1.123', () => {
         expect(testValue(1.123)).toBeFalsy();
     });
-    test('Test new Date(\'01/01/3000\').valueOf()', () => {
-        expect(testValue(BigInt(new Date('01/01/3000').valueOf()))).toBeFalsy();
+    test('Test new Date(\'3000-01-01T00:00:00.000Z\').valueOf()', () => {
+        expect(testValue(new Date('3000-01-01T00:00:00.000Z').valueOf())).toBeFalsy();
     });
-    test('Test new Date(\'01/01/3000\').valueOf() + 1', () => {
-        expect(testValue(BigInt(new Date('01/01/3000').valueOf()) + 1n)).toBeFalsy();
+    test('Test new Date(\'3000-01-01T00:00:00.000Z\').valueOf() + 1', () => {
+        expect(testValue(new Date('3000-01-01T00:00:00.000Z').valueOf() + 1)).toBeFalsy();
     });
     test('Test NaN', () => {
         expect(testValue(NaN)).toBeFalsy();
@@ -169,11 +169,11 @@ describe('Test isBooleanValue', () => {
     test('Test 1.123', () => {
         expect(testValue(1.123)).toBeFalsy();
     });
-    test('Test new Date(\'01/01/3000\').valueOf()', () => {
-        expect(testValue(BigInt(new Date('01/01/3000').valueOf()))).toBeTruthy();
+    test('Test new Date(\'3000-01-01T00:00:00.000Z\').valueOf()', () => {
+        expect(testValue(new Date('3000-01-01T00:00:00.000Z').valueOf())).toBeTruthy();
     });
-    test('Test new Date(\'01/01/3000\').valueOf() + 1', () => {
-        expect(testValue(BigInt(new Date('01/01/3000').valueOf()) + 1n)).toBeTruthy();
+    test('Test new Date(\'3000-01-01T00:00:00.000Z\').valueOf() + 1', () => {
+        expect(testValue(new Date('3000-01-01T00:00:00.000Z').valueOf() + 1)).toBeTruthy();
     });
     test('Test NaN', () => {
         expect(testValue(NaN)).toBeFalsy();
@@ -245,11 +245,11 @@ describe('Test isDate', () => {
     test('Test 1.123', () => {
         expect(testValue(1.123)).toBeFalsy();
     });
-    test('Test new Date(\'01/01/3000\').valueOf()', () => {
-        expect(testValue(BigInt(new Date('01/01/3000').valueOf()))).toBeFalsy();
+    test('Test new Date(\'3000-01-01T00:00:00.000Z\').valueOf()', () => {
+        expect(testValue(new Date('3000-01-01T00:00:00.000Z').valueOf())).toBeFalsy();
     });
-    test('Test new Date(\'01/01/3000\').valueOf() + 1', () => {
-        expect(testValue(BigInt(new Date('01/01/3000').valueOf()) + 1n)).toBeFalsy();
+    test('Test new Date(\'3000-01-01T00:00:00.000Z\').valueOf() + 1', () => {
+        expect(testValue(new Date('3000-01-01T00:00:00.000Z').valueOf() + 1)).toBeFalsy();
     });
     test('Test NaN', () => {
         expect(testValue(NaN)).toBeFalsy();
@@ -324,13 +324,13 @@ describe('Test isDateValue', () => {
     test('Test 1.123', () => {
         expect(testValue(1.123)).toBeFalsy();
     });
-    test('Test new Date(\'01/01/3000\').valueOf()', () => {
-        // expect(testValue(BigInt(new Date('01/01/3000').valueOf()))).toBeTruthy();
-        testValue(BigInt(new Date('01/01/3000').valueOf()));
+    test('Test new Date(\'3000-01-01T00:00:00.000Z\').valueOf()', () => {
+        // testValue(new Date('3000-01-01T00:00:00.000Z').valueOf());
+        expect(testValue(new Date('3000-01-01T00:00:00.000Z').valueOf())).toBeTruthy();
     });
-    test('Test new Date(\'01/01/3000\').valueOf() + 1', () => {
-//        expect(testValue(BigInt(new Date('01/01/3000').valueOf()) + 1n)).toBeFalsy();
-        testValue(BigInt(new Date('01/01/3000').valueOf()) + 1n);
+    test('Test new Date(\'3000-01-01T00:00:00.000Z\').valueOf() + 1', () => {
+        testValue(new Date('3000-01-01T00:00:00.000Z').valueOf() + 1);
+        // expect(testValue(new Date('3000-01-01T00:00:00.000Z').valueOf() + 1)).toBeFalsy();
     });
     test('Test NaN', () => {
         expect(testValue(NaN)).toBeFalsy();
@@ -402,11 +402,11 @@ describe('Test isEmpty', () => {
     test('Test 1.123', () => {
         expect(testValue(1.123)).toBeFalsy();
     });
-    test('Test new Date(\'01/01/3000\').valueOf()', () => {
-        expect(testValue(BigInt(new Date('01/01/3000').valueOf()))).toBeFalsy();
+    test('Test new Date(\'3000-01-01T00:00:00.000Z\').valueOf()', () => {
+        expect(testValue(new Date('3000-01-01T00:00:00.000Z').valueOf())).toBeFalsy();
     });
-    test('Test new Date(\'01/01/3000\').valueOf() + 1', () => {
-        expect(testValue(BigInt(new Date('01/01/3000').valueOf()) + 1n)).toBeFalsy();
+    test('Test new Date(\'3000-01-01T00:00:00.000Z\').valueOf() + 1', () => {
+        expect(testValue(new Date('3000-01-01T00:00:00.000Z').valueOf() + 1)).toBeFalsy();
     });
     test('Test NaN', () => {
         expect(testValue(NaN)).toBeFalsy();
@@ -478,11 +478,11 @@ describe('Test isFunction', () => {
     test('Test 1.123', () => {
         expect(testValue(1.123)).toBeFalsy();
     });
-    test('Test new Date(\'01/01/3000\').valueOf()', () => {
-        expect(testValue(BigInt(new Date('01/01/3000').valueOf()))).toBeFalsy();
+    test('Test new Date(\'3000-01-01T00:00:00.000Z\').valueOf()', () => {
+        expect(testValue(new Date('3000-01-01T00:00:00.000Z').valueOf())).toBeFalsy();
     });
-    test('Test new Date(\'01/01/3000\').valueOf() + 1', () => {
-        expect(testValue(BigInt(new Date('01/01/3000').valueOf()) + 1n)).toBeFalsy();
+    test('Test new Date(\'3000-01-01T00:00:00.000Z\').valueOf() + 1', () => {
+        expect(testValue(new Date('3000-01-01T00:00:00.000Z').valueOf() + 1)).toBeFalsy();
     });
     test('Test NaN', () => {
         expect(testValue(NaN)).toBeFalsy();
@@ -554,11 +554,11 @@ describe('Test isNotEmpty', () => {
     test('Test 1.123', () => {
         expect(testValue(1.123)).toBeTruthy();
     });
-    test('Test new Date(\'01/01/3000\').valueOf()', () => {
-        expect(testValue(BigInt(new Date('01/01/3000').valueOf()))).toBeTruthy();
+    test('Test new Date(\'3000-01-01T00:00:00.000Z\').valueOf()', () => {
+        expect(testValue(new Date('3000-01-01T00:00:00.000Z').valueOf())).toBeTruthy();
     });
-    test('Test new Date(\'01/01/3000\').valueOf() + 1', () => {
-        expect(testValue(BigInt(new Date('01/01/3000').valueOf()) + 1n)).toBeTruthy();
+    test('Test new Date(\'3000-01-01T00:00:00.000Z\').valueOf() + 1', () => {
+        expect(testValue(new Date('3000-01-01T00:00:00.000Z').valueOf() + 1)).toBeTruthy();
     });
     test('Test NaN', () => {
         expect(testValue(NaN)).toBeTruthy();
@@ -630,11 +630,11 @@ describe('Test isNull', () => {
     test('Test 1.123', () => {
         expect(testValue(1.123)).toBeFalsy();
     });
-    test('Test new Date(\'01/01/3000\').valueOf()', () => {
-        expect(testValue(BigInt(new Date('01/01/3000').valueOf()))).toBeFalsy();
+    test('Test new Date(\'3000-01-01T00:00:00.000Z\').valueOf()', () => {
+        expect(testValue(new Date('3000-01-01T00:00:00.000Z').valueOf())).toBeFalsy();
     });
-    test('Test new Date(\'01/01/3000\').valueOf() + 1', () => {
-        expect(testValue(BigInt(new Date('01/01/3000').valueOf()) + 1n)).toBeFalsy();
+    test('Test new Date(\'3000-01-01T00:00:00.000Z\').valueOf() + 1', () => {
+        expect(testValue(new Date('3000-01-01T00:00:00.000Z').valueOf() + 1)).toBeFalsy();
     });
     test('Test NaN', () => {
         expect(testValue(NaN)).toBeFalsy();
@@ -706,11 +706,11 @@ describe('Test isNumber', () => {
     test('Test 1.123', () => {
         expect(testValue(1.123)).toBeTruthy();
     });
-    test('Test new Date(\'01/01/3000\').valueOf()', () => {
-        expect(testValue(BigInt(new Date('01/01/3000').valueOf()))).toBeTruthy();
+    test('Test new Date(\'3000-01-01T00:00:00.000Z\').valueOf()', () => {
+        expect(testValue(new Date('3000-01-01T00:00:00.000Z').valueOf())).toBeTruthy();
     });
-    test('Test new Date(\'01/01/3000\').valueOf() + 1', () => {
-        expect(testValue(BigInt(new Date('01/01/3000').valueOf()) + 1n)).toBeTruthy();
+    test('Test new Date(\'3000-01-01T00:00:00.000Z\').valueOf() + 1', () => {
+        expect(testValue(new Date('3000-01-01T00:00:00.000Z').valueOf() + 1)).toBeTruthy();
     });
     test('Test NaN', () => {
         expect(testValue(NaN)).toBeFalsy();
@@ -782,11 +782,11 @@ describe('Test isNumberValue', () => {
     test('Test 1.123', () => {
         expect(testValue(1.123)).toBeTruthy();
     });
-    test('Test new Date(\'01/01/3000\').valueOf()', () => {
-        expect(testValue(BigInt(new Date('01/01/3000').valueOf()))).toBeTruthy();
+    test('Test new Date(\'3000-01-01T00:00:00.000Z\').valueOf()', () => {
+        expect(testValue(new Date('3000-01-01T00:00:00.000Z').valueOf())).toBeTruthy();
     });
-    test('Test new Date(\'01/01/3000\').valueOf() + 1', () => {
-        expect(testValue(BigInt(new Date('01/01/3000').valueOf()) + 1n)).toBeTruthy();
+    test('Test new Date(\'3000-01-01T00:00:00.000Z\').valueOf() + 1', () => {
+        expect(testValue(new Date('3000-01-01T00:00:00.000Z').valueOf() + 1)).toBeTruthy();
     });
     test('Test NaN', () => {
         expect(testValue(NaN)).toBeFalsy();
@@ -858,11 +858,11 @@ describe('Test isObject', () => {
     test('Test 1.123', () => {
         expect(testValue(1.123)).toBeFalsy();
     });
-    test('Test new Date(\'01/01/3000\').valueOf()', () => {
-        expect(testValue(BigInt(new Date('01/01/3000').valueOf()))).toBeFalsy();
+    test('Test new Date(\'3000-01-01T00:00:00.000Z\').valueOf()', () => {
+        expect(testValue(new Date('3000-01-01T00:00:00.000Z').valueOf())).toBeFalsy();
     });
-    test('Test new Date(\'01/01/3000\').valueOf() + 1', () => {
-        expect(testValue(BigInt(new Date('01/01/3000').valueOf()) + 1n)).toBeFalsy();
+    test('Test new Date(\'3000-01-01T00:00:00.000Z\').valueOf() + 1', () => {
+        expect(testValue(new Date('3000-01-01T00:00:00.000Z').valueOf() + 1)).toBeFalsy();
     });
     test('Test NaN', () => {
         expect(testValue(NaN)).toBeFalsy();
@@ -934,11 +934,11 @@ describe('Test isString', () => {
     test('Test 1.123', () => {
         expect(testValue(1.123)).toBeFalsy();
     });
-    test('Test new Date(\'01/01/3000\').valueOf()', () => {
-        expect(testValue(BigInt(new Date('01/01/3000').valueOf()))).toBeFalsy();
+    test('Test new Date(\'3000-01-01T00:00:00.000Z\').valueOf()', () => {
+        expect(testValue(new Date('3000-01-01T00:00:00.000Z').valueOf())).toBeFalsy();
     });
-    test('Test new Date(\'01/01/3000\').valueOf() + 1', () => {
-        expect(testValue(BigInt(new Date('01/01/3000').valueOf()) + 1n)).toBeFalsy();
+    test('Test new Date(\'3000-01-01T00:00:00.000Z\').valueOf() + 1', () => {
+        expect(testValue(new Date('3000-01-01T00:00:00.000Z').valueOf() + 1)).toBeFalsy();
     });
     test('Test NaN', () => {
         expect(testValue(NaN)).toBeFalsy();
@@ -1010,11 +1010,11 @@ describe('Test isUndefined', () => {
     test('Test 1.123', () => {
         expect(testValue(1.123)).toBeFalsy();
     });
-    test('Test new Date(\'01/01/3000\').valueOf()', () => {
-        expect(testValue(BigInt(new Date('01/01/3000').valueOf()))).toBeFalsy();
+    test('Test new Date(\'3000-01-01T00:00:00.000Z\').valueOf()', () => {
+        expect(testValue(new Date('3000-01-01T00:00:00.000Z').valueOf())).toBeFalsy();
     });
-    test('Test new Date(\'01/01/3000\').valueOf() + 1', () => {
-        expect(testValue(BigInt(new Date('01/01/3000').valueOf()) + 1n)).toBeFalsy();
+    test('Test new Date(\'3000-01-01T00:00:00.000Z\').valueOf() + 1', () => {
+        expect(testValue(new Date('3000-01-01T00:00:00.000Z').valueOf() + 1)).toBeFalsy();
     });
     test('Test NaN', () => {
         expect(testValue(NaN)).toBeFalsy();

@@ -64,13 +64,14 @@ function isDateValue(value) {
         const big = BigInt(value);
         console.log('isDateValue', 2, value, big, big >= 0n, big <= 32503698000000n);
         return big >= 0n
-            && big <= 32503698000000n;
+            && big <= 32503680000000n;
     } else if (isNumberValue(value)) {
         const num = Number(value);
         console.log('isDateValue', 3, value, num, !isNaN(num), Number.isInteger(value));
         return !isNaN(num)
             && Number.isInteger(value)
-            && num >= 0;
+            && num >= 0
+            && num <= 32503680000000;
     } else if (isString(value)) {
         const date = new Date(value);
         console.log('isDateValue', 4, value, date);
