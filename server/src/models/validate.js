@@ -47,15 +47,18 @@ function isDate(value) {
 
 function isDateValue(value) {
     if (isDate(value)) {
+        console.log('isDateValue', 1, value);
         return true;
     } else if (isNumberValue(value)) {
         const num = Number(value);
+        console.log('isDateValue', 2, value, num);
         return !isNaN(num)
             && Number.isInteger(value)
             && num >= 0
             && num <= 32503698000000;
     } else if (isString(value)) {
         const date = new Date(value);
+        console.log('isDateValue', 3, value, date);
         return (!isNaN(date)
             || date.toString() != 'Invalid Date');
     }

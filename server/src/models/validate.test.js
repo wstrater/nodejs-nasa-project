@@ -306,7 +306,9 @@ describe('Test isDate', () => {
 
 describe('Test isDateValue', () => {
     const testValue = function(value) {
-        return validate.isDateValue(value)
+        const ret = validate.isDateValue(value);
+        console.log('validate.isDateValue', value, ret);
+        return ret;
     };
 
     test('Test -1', () => {

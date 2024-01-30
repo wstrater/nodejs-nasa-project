@@ -12,7 +12,7 @@ const schema = new mongoose.Schema({
     flightNumber: {
         type: Number,
         required: true,
-        unique: true
+        unique: false
     },
     mission: {
         type: String,
