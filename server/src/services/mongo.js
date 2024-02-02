@@ -26,6 +26,7 @@ async function initializeMongo() {
         console.error(err);
     })
 
+    // console.log('initializeMongo', MONGO_URL);
     await mongoose.connect(MONGO_URL);
 
     await loadPlanetData();
